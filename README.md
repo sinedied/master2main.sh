@@ -17,7 +17,7 @@ bash <(curl -Ls https://aka.ms/master2main.sh)
 The migration process is interactive and will prompt you for confirmation before proceeding.
 
 If your repo origin is a GitHub URL, it will set the default branch on GitHub using a personal access token provided via the environment variable `GITHUB_TOKEN`. Your token must have the `repo` access rights.
-See https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token for learning how to create a personal access token.
+Follow [these steps](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token) to create a personal access token.
 
 ### What the script does
 
