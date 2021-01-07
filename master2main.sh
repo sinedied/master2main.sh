@@ -80,12 +80,12 @@ echo
 set +e
 grep --color -rnw . -e master --exclude-dir node_modules --exclude-dir .git
 
-if [[ ! $? ]]; then
-  echo "No references found, all clear!"
-else
+if [[ $? -eq 0 ]]; then
   echo
   echo "${COLOR_YELLOW}Some references to \"master\" were found in your repo.${COLOR_RST}"
   echo "${COLOR_YELLOW}You might want to check if these need changes before proceeding to migration.${COLOR_RST}"
+else
+  echo "No references found, all clear!"
 fi
 
 set -e
