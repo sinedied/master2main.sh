@@ -21,14 +21,14 @@ See https://docs.github.com/github/authenticating-to-github/creating-a-personal-
 
 ### What the script does
 
-- Search for all references to "master" within your repo and list them, so you can take care of them if needed.
-- Ask for confirmation before proceeding with these steps:
+1. Search for all references to "master" within your repo and list them, so you can take care of them if needed.
+2. Ask for confirmation before proceeding with these steps:
   * `git branch -m master main`: move branch to `main`.
   * `git push -u origin main` : push the new branch to remote.
   * `git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main`: switch the local branch HEAD references to `main`.
-- If your repo is linked to a GitHub repository, change the default GitHub branch to `main`.
+3. If your repo is linked to a GitHub repository, change the default GitHub branch to `main`.
   * Note: if you have defined [branch protection settings](https://docs.github.com/github/administering-a-repository/configuring-protected-branches), these will **NOT** be migrated, you'll have to take care of it manually. I'm currently looking for a way to also migrate these settings (any help welcome).
-- Ask for confirmation before proceeding to the final step:
+4. Ask for confirmation before proceeding to the final step:
   * `git push origin --delete master`: delete the remote `master` branch.
 
 And because you should never trust any random script you found on the internet, you can always check the [script source](master2main.sh) to see the details.
