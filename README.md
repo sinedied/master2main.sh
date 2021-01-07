@@ -23,6 +23,8 @@ Follow [these steps](https://docs.github.com/github/authenticating-to-github/cre
 
 1. Search for all references to "master" within your repo and list them, so you can take care of them if needed.
 2. Ask for confirmation before proceeding with these steps:
+  * `git checkout master`: switch to `master` branch
+  * `git pull`: make sure your branch is up-to-date
   * `git branch -m master main`: move branch to `main`.
   * `git push -u origin main` : push the new branch to remote.
   * `git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main`: switch the local branch HEAD references to `main`.

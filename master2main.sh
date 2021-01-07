@@ -107,6 +107,8 @@ echo "${COLOR_GREEN}** Migrating \"master\" branch to \"main\" **${COLOR_RST}"
 echo
 set -x
 
+git checkout master
+git pull
 git branch -m master main
 git push -u origin main
 git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
