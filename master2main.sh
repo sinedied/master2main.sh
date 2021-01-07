@@ -29,6 +29,7 @@ COLOR_RST="$(tput sgr0)"
 COLOR_RED="$(tput setaf 1)"
 COLOR_GREEN="$(tput setaf 2)"
 COLOR_YELLOW="$(tput setaf 3)"
+UNDERLINE="$(tput smul)"
 
 # Skip confirmation option
 if [[ $1 == "-y" ]]; then
@@ -120,24 +121,26 @@ echo
 
 # Change the default branch also on GitHub, if needed
 if [[ IS_GITHUB ]]; then
-  echo "${COLOR_GREEN}** Changing GitHub default branch to 'main' **${COLOR_RST}"
+  echo "${COLOR_GREEN}** Changing GitHub default branch to \"main\" **${COLOR_RST}"
   echo
   curl -H "Authorization: token $GITHUB_TOKEN" \
     -H "Content-Type: application/json" \
     -d "{\"name\":\"${REPO}\",\"default_branch\":\"main\"}" \
     -X PATCH -L -s $GITHUB_API > /dev/null
-
-  # TODO: migrate GitHub branch protection if any
-  # BRANCH_PROTECTION=$(curl -H "Authorization: token $GITHUB_TOKEN" -L -s "${GITHUB_API}/branches/master/protection")
-
-  # Unfortunately, this needs a bit more work than that :(  
-  # curl -H "Authorization: token $GITHUB_TOKEN" \
-  #     -H "Content-Type: application/json" \
-  #     -d "${BRANCH_PROTECTION//master/main}" \
-  #     -X PUT -L -s "${GITHUB_API}/branches/main/protection"
-
   echo "Done."
   echo
+
+  # Check if master branch is protected
+  PROTECTED=$(curl $GITHUB_API/branches/master | grep -Eo '"protected":(.*)')
+
+  if [[ $PROTECTED == *"true"* ]]; then
+    echo "${COLOR_YELLOW}There are protection rules set on master branch.${COLOR_RST}"
+    echo "${COLOR_YELLOW}Open ${UNDERLINE}https://github.com/${OWNER}/${REPO}/settings/branches${COLOR_RST}${COLOR_YELLOW} to edit them.${COLOR_RST}"
+    echo
+    read -s -n 1 -p "Press enter to continue."
+    echo
+    echo
+  fi
 fi
 
 # Confirm master branch deletion on remote
