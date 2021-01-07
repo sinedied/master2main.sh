@@ -30,6 +30,7 @@ Follow [these steps](https://docs.github.com/github/authenticating-to-github/cre
   * `git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main`: switch the local branch HEAD references to `main`.
 3. If your repo is linked to a GitHub repository, change the default GitHub branch to `main`.
   * Note: if you have defined [branch protection settings](https://docs.github.com/github/administering-a-repository/configuring-protected-branches), these will **NOT** be migrated, you'll have to take care of it manually. I'm currently looking for a way to also migrate these settings (any help welcome).
+  * Read more about GitHub specific challenges [here](https://github.com/github/renaming).
 4. Ask for confirmation before proceeding to the final step:
   * `git push origin --delete master`: delete the remote `master` branch.
 
