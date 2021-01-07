@@ -12,7 +12,7 @@ Open a terminal at the root of the git repository you want to migrate, then run:
 bash <(curl -Ls https://aka.ms/master2main.sh)
 ```
 
-> Note: https://aka.ms/master2main.sh is a shortlink for https://raw.githubusercontent.com/sinedied/master2main/main/master2main.sh
+> Note: https://aka.ms/master2main.sh is a shortlink for https://raw.githubusercontent.com/sinedied/master2main.sh/main/master2main.sh
 
 The migration process is interactive and will prompt you for confirmation before proceeding.
 
