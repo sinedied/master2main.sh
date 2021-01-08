@@ -114,7 +114,7 @@ git branch -m master main
 git push -u origin main
 git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
 
-set +x
+{ set +x; } 2>/dev/null
 echo
 echo "Done."
 echo
@@ -156,7 +156,7 @@ if [[ ! $SKIP_CONFIRMATION ]]; then
 
     git push origin --delete master
 
-    set +x
+    { set +x; } 2>/dev/null
   else
     echo
     echo "Once you've checked everything is fine on your end, you can run this command"
