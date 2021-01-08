@@ -152,11 +152,11 @@ if [[ ! $SKIP_CONFIRMATION ]]; then
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "${COLOR_GREEN}** Deleting \"master\" branch on remote **${COLOR_RST}"
     echo
-    set +x
+    set -x
 
     git push origin --delete master
 
-    set -x
+    set +x
   else
     echo
     echo "Once you've checked everything is fine on your end, you can run this command"
