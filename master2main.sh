@@ -131,7 +131,7 @@ if [[ IS_GITHUB ]]; then
   echo
 
   # Check if master branch is protected
-  PROTECTED=$(curl $GITHUB_API/branches/master | grep -Eo '"protected":(.*)')
+  PROTECTED=$(curl -s $GITHUB_API/branches/master | grep -Eo '"protected":(.*)')
 
   if [[ $PROTECTED == *"true"* ]]; then
     echo "${COLOR_YELLOW}There are protection rules set on master branch.${COLOR_RST}"
